@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>Inspiration for Custom Select Elements | Demo 7</title>
+		<meta name="description" content="Creative styles and ideas for custom select elements" />
+		<meta name="keywords" content="custom select, select style, javascript, inspiration, select element" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cs-select.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='demo.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cs-skin-boxes.css') }}" />
+		<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body class="color-7">
+		{% if alert %}
+			<script>
+				alert("Veuiler saisr tout les argument s'il vous plait");
+			</script>
+		{% endif %}
+		<div class="container">
+			<!-- Top Navigation -->
+			
+			<header class="codrops-header">
+				<h1><span>Simulateur D'emprunt pour l’achat d’une voiture par</span> Green Bank</h1>	
+			</header>
+			<form method="post" action="/">
+                <section>
+                    <select class="cs-select cs-skin-boxes" name="voiture">
+                        <option value="" disabled selected>Type of Car</option>
+                        {% for option in options_voiture %}
+                            <option value="{{ option }}" data-class="color-588c75">{{ option }}</option>
+                        {% endfor %}
+                    </select>
+                    <select class="cs-select cs-skin-boxes" name="energie">
+                        <option value="" disabled selected >Carburant used</option>
+                        {% for option in options_energie %}
+                            <option value="{{ option }}" data-class="color-588c75">{{ option }}</option>
+                        {% endfor %}
+                    </select>
+                </section>
+                <section>
+                    <select class="cs-select cs-skin-boxes" name="kilometrage">
+                        <option value="" disabled selected>Kilometrage</option>
+                        {% for option in options_kilometrage %}
+                            <option value="{{ option }}" data-class="color-588c75">{{ option }}</option>
+                        {% endfor %}
+                    </select>
+                </section>
+                <section>
+                    <select class="cs-select cs-skin-boxes" name="passager">
+                        <option value="" disabled selected>Number Passager</option>
+                        {% for option in option_passager %}
+                            <option value="{{ option }}" data-class="color-588c75">{{ option }}</option>
+                        {% endfor %}
+                    </select>
+                    <select class="cs-select cs-skin-boxes" name="annee">
+                        <option value="" disabled selected>Year of Car</option>
+                        {% for option in options_annee %}
+                            <option value="{{ option }}" data-class="color-588c75">{{ option }}</option>
+                        {% endfor %}
+                    </select>
+                </section>
+                <section class="footer">
+                    <button type="submit" class="button-74" role="button">Calculer le taux d'emprunt</button><div>
+					<span class="taux">Taux  : {{ resultat }}%</span></div>
+                    
+                </section>
+            </form>
+            
+			<!-- Related demos -->
+			
+		</div><!-- /container -->
+		<script src="{{ url_for('static', filename='js/classie.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/selectFx.js') }}"></script>
+		<script>
+			(function() {
+				[].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {	
+					new SelectFx(el, {
+						stickyPlaceholder: false,
+						onChange: function(val){
+							document.querySelector('span.cs-placeholder').style.backgroundColor = val;
+						}
+					});
+				} );
+			})();
+		</script>
+	</body>
+</html>
