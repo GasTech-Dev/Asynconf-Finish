@@ -45,4 +45,4 @@ def index():
                            kilometrage_selected=kilometrage_selected, annee_selected=annee_selected, option_passager=option_passager, resultat = resultat, alert=alert)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
